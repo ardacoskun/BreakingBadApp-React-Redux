@@ -23,7 +23,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Characters</h1>
+      <h1 className="homeTitle">Characters</h1>
 
       <Masonry
         breakpointCols={4}
@@ -33,6 +33,7 @@ const Home = () => {
         {data.map((item) => (
           <div key={item.char_id}>
             <img src={item.img} alt={item.name} className="characterImg" />
+            <div className="characterName">{item.name}</div>
           </div>
         ))}
       </Masonry>
