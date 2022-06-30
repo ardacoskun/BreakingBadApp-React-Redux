@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Masonry from "react-masonry-css";
 import { useSelector, useDispatch } from "react-redux";
+import { Error, Loading } from "../components";
 import { fetchCharacters } from "../store/characterSlice";
 
 const Home = () => {
@@ -14,11 +15,11 @@ const Home = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error message={error} />;
   }
 
   return (

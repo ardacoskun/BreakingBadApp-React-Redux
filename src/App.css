@@ -28,3 +28,18 @@
 .homeTitle {
   text-align: center;
 }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: cornflowerblue;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  color: red;
+  font-weight: bold;
+}
