@@ -43,3 +43,16 @@
   color: red;
   font-weight: bold;
 }
+
+.seeMoreContainer {
+  padding: 20px 0 40px 0;
+  text-align: center;
+}
+
+.seeMoreButton {
+  padding: 10px;
+  cursor: pointer;
+  background-color: cornflowerblue;
+  color: #fff;
+  border: none;
+}

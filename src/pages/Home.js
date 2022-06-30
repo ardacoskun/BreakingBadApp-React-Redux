@@ -6,6 +6,7 @@ import { fetchCharacters } from "../store/characterSlice";
 
 const Home = () => {
   const data = useSelector((state) => state.characters.items);
+  const nextPage = useSelector((state) => state.characters.page);
   const isLoading = useSelector((state) => state.characters.isLoading);
   const error = useSelector((state) => state.characters.error);
   const dispatch = useDispatch();
@@ -38,6 +39,14 @@ const Home = () => {
           </div>
         ))}
       </Masonry>
+      <div className="seeMoreContainer">
+        <button
+          className="seeMoreButton"
+          onClick={() => dispatch(fetchCharacters(nextPage))}
+        >
+          See More ({nextPage})
+        </button>
+      </div>
     </div>
   );
 };
