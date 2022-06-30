@@ -22,6 +22,7 @@ export const characterSlice = createSlice({
     isLoading: false,
     error: null,
     page: 0,
+    hasNextPage: true,
   },
   reducers: {},
   extraReducers: {
@@ -30,8 +31,12 @@ export const characterSlice = createSlice({
     },
     [fetchCharacters.fulfilled]: (state, action) => {
       state.items = [...state.items, ...action.payload];
-      state.page += 1;
       state.isLoading = false;
+      state.page += 1;
+
+      if (action.payload.length < characterLimit) {
+        state.hasNextPage = false;
+      }
     },
     [fetchCharacters.rejected]: (state, action) => {
       state.isLoading = false;

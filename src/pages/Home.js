@@ -7,6 +7,7 @@ import { fetchCharacters } from "../store/characterSlice";
 const Home = () => {
   const data = useSelector((state) => state.characters.items);
   const nextPage = useSelector((state) => state.characters.page);
+  const hasNextPage = useSelector((state) => state.characters.hasNextPage);
   const isLoading = useSelector((state) => state.characters.isLoading);
   const error = useSelector((state) => state.characters.error);
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className="homeTitle">Characters</h1>
+      {!isLoading && <h1 className="homeTitle">Characters</h1>}
 
       <Masonry
         breakpointCols={4}
@@ -37,12 +38,15 @@ const Home = () => {
       </Masonry>
       <div className="seeMoreContainer">
         {isLoading && <Loading />}
-        <button
-          className="seeMoreButton"
-          onClick={() => dispatch(fetchCharacters(nextPage))}
-        >
-          See More ({nextPage})
-        </button>
+        {hasNextPage && !isLoading && (
+          <button
+            className="seeMoreButton"
+            onClick={() => dispatch(fetchCharacters(nextPage))}
+          >
+            See More ({nextPage})
+          </button>
+        )}
+        {!hasNextPage && <h2>There is nothing to be shown.</h2>}
       </div>
     </div>
   );
