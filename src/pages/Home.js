@@ -15,10 +15,6 @@ const Home = () => {
     dispatch(fetchCharacters());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   if (error) {
     return <Error message={error} />;
   }
@@ -40,6 +36,7 @@ const Home = () => {
         ))}
       </Masonry>
       <div className="seeMoreContainer">
+        {isLoading && <Loading />}
         <button
           className="seeMoreButton"
           onClick={() => dispatch(fetchCharacters(nextPage))}
