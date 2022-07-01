@@ -44,10 +44,6 @@
   font-weight: bold;
 }
 
-.homeTitle {
-  text-align: center;
-}
-
 .loading {
   display: flex;
   align-items: center;
@@ -61,6 +57,10 @@
   align-items: center;
   color: red;
   font-weight: bold;
+}
+
+.title {
+  margin: 20px;
 }
 
 .seeMoreContainer {
@@ -92,4 +92,13 @@
 
 .navbar > a:hover {
   text-decoration: underline;
+}
+
+.quotesContainer {
+  padding: 10px 0;
+}
+
+.quotesInfo {
+  padding: 30px;
+  text-align: center;
 }

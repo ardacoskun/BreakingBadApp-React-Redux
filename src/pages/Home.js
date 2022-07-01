@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <div>
-      {status !== "loading" && <h1 className="homeTitle">Characters</h1>}
+      {status !== "loading" && <h1 className="title">Characters</h1>}
 
       <Masonry
         breakpointCols={4}
