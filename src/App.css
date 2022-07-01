@@ -102,3 +102,12 @@
   padding: 30px;
   text-align: center;
 }
+
+.quotesContainer > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.quotesContainer > a:hover {
+  text-decoration: underline;
+}
