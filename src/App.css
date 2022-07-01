@@ -111,3 +111,11 @@
 .quotesContainer > a:hover {
   text-decoration: underline;
 }
+
+.quoteDetail {
+  margin: 10px 10px 20px 10px;
+}
+
+.quoteDetail > pre {
+  margin-top: 20px;
+}
