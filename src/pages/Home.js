@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Masonry from "react-masonry-css";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { Error, Loading } from "../components";
 import { fetchCharacters } from "../store/characterSlice";
 
@@ -31,8 +32,10 @@ const Home = () => {
       >
         {data.map((item) => (
           <div key={item.char_id}>
-            <img src={item.img} alt={item.name} className="characterImg" />
-            <div className="characterName">{item.name}</div>
+            <Link to={`/character/${item.char_id}`}>
+              <img src={item.img} alt={item.name} className="characterImg" />
+              <div className="characterName">{item.name}</div>
+            </Link>
           </div>
         ))}
       </Masonry>
