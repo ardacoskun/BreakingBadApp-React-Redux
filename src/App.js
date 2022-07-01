@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Detail, Quotes } from "./pages";
 import "./App.css";
-import Detail from "./pages/Detail";
 import { Navbar } from "./components";
 
 const App = () => {
@@ -12,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character/:characterId" element={<Detail />} />
+        <Route path="/quotes" element={<Quotes />} />
       </Routes>
     </>
   );
