@@ -29,7 +29,7 @@ const Quotes = () => {
       {status !== "loading" && <h1 className="title">Quotes</h1>}
       {status === "loading" && <Loading />}
       {status === "succeeded" &&
-        data.map((item, index) => <QuoteItem index={index} item={item} />)}
+        data.map((item, index) => <QuoteItem key={index} item={item} />)}
       {status === "succeeded" && (
         <div className="quotesInfo">{data.length} quotes</div>
       )}

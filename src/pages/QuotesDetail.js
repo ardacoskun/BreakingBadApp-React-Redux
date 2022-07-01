@@ -1,7 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { quotesSelector } from "../store/quotesSlice";
 
 const QuotesDetail = () => {
   const { quoteId } = useParams();
@@ -9,6 +8,10 @@ const QuotesDetail = () => {
   const quote = useSelector((state) =>
     state.quotes.items.find((item) => item.quote_id === Number(quoteId))
   );
+
+  if (!quote) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="quoteDetail">

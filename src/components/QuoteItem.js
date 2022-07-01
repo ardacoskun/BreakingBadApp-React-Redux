@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const QuoteItem = ({ item, index }) => {
+const QuoteItem = ({ item }) => {
   return (
-    <div key={index} className="quotesContainer">
+    <div className="quotesContainer">
       <Link to={`/quotes/${item.quote_id}`}>
         {" "}
         <q>{item.quote}</q>
