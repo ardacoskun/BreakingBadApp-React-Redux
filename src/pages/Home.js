@@ -9,29 +9,31 @@ const Home = () => {
   const data = useSelector((state) => state.characters.items);
   const nextPage = useSelector((state) => state.characters.page);
   const hasNextPage = useSelector((state) => state.characters.hasNextPage);
-  const isLoading = useSelector((state) => state.characters.isLoading);
+  const status = useSelector((state) => state.characters.status);
   const error = useSelector((state) => state.characters.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchCharacters());
-  }, [dispatch]);
+    if (status === "idle") {
+      dispatch(fetchCharacters());
+    }
+  }, [dispatch, status]);
 
-  if (error) {
+  if (status === "failed") {
     return <Error message={error} />;
   }
 
   return (
     <div>
-      {!isLoading && <h1 className="homeTitle">Characters</h1>}
+      {status !== "loading" && <h1 className="homeTitle">Characters</h1>}
 
       <Masonry
         breakpointCols={4}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {data.map((item) => (
-          <div key={item.char_id}>
+        {data.map((item, index) => (
+          <div key={index}>
             <Link to={`/character/${item.char_id}`}>
               <img src={item.img} alt={item.name} className="characterImg" />
               <div className="characterName">{item.name}</div>
@@ -40,8 +42,8 @@ const Home = () => {
         ))}
       </Masonry>
       <div className="seeMoreContainer">
-        {isLoading && <Loading />}
-        {hasNextPage && !isLoading && (
+        {status === "loading" && <Loading />}
+        {hasNextPage && status !== "loading" && (
           <button
             className="seeMoreButton"
             onClick={() => dispatch(fetchCharacters(nextPage))}
